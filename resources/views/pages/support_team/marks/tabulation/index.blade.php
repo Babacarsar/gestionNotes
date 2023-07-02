@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('page_title', 'Tabulation Sheet')
+@section('page_title', 'Feuille De calcul')
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title"><i class="icon-books mr-2"></i> Tabulation Sheet</h5>
+            <h5 class="card-title"><i class="icon-books mr-2"></i> Feuille De calcul</h5>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -14,8 +14,8 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="exam_id" class="col-form-label font-weight-bold">Exam:</label>
-                                            <select required id="exam_id" name="exam_id" class="form-control select" data-placeholder="Select Exam">
+                                            <label for="exam_id" class="col-form-label font-weight-bold">Examen:</label>
+                                            <select required id="exam_id" name="exam_id" class="form-control select" data-placeholder="Selectionner Examen">
                                                 @foreach($exams as $exm)
                                                     <option {{ ($selected && $exam_id == $exm->id) ? 'selected' : '' }} value="{{ $exm->id }}">{{ $exm->name }}</option>
                                                 @endforeach
@@ -25,8 +25,8 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="my_class_id" class="col-form-label font-weight-bold">Class:</label>
-                                            <select onchange="getClassSections(this.value)" required id="my_class_id" name="my_class_id" class="form-control select" data-placeholder="Select Class">
+                                            <label for="my_class_id" class="col-form-label font-weight-bold">Classe:</label>
+                                            <select onchange="getClassSections(this.value)" required id="my_class_id" name="my_class_id" class="form-control select" data-placeholder="Selectionner Classe">
                                                 <option value=""></option>
                                                 @foreach($my_classes as $c)
                                                     <option {{ ($selected && $my_class_id == $c->id) ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
@@ -38,7 +38,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="section_id" class="col-form-label font-weight-bold">Section:</label>
-                                <select required id="section_id" name="section_id" data-placeholder="Select Class First" class="form-control select">
+                                <select required id="section_id" name="section_id" data-placeholder="Selectionner la  Classe en premier" class="form-control select">
                                     @if($selected)
                                         @foreach($sections->where('my_class_id', $my_class_id) as $s)
                                             <option {{ $section_id == $s->id ? 'selected' : '' }} value="{{ $s->id }}">{{ $s->name }}</option>
@@ -51,7 +51,7 @@
 
                         <div class="col-md-2 mt-4">
                             <div class="text-right mt-1">
-                                <button type="submit" class="btn btn-primary">View Sheet <i class="icon-paperplane ml-2"></i></button>
+                                <button type="submit" class="btn btn-primary">Voir Feuille <i class="icon-paperplane ml-2"></i></button>
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>NAMES_OF_STUDENTS_IN_CLASS</th>
+                        <th>Nom de l'étudiant</th>
                        @foreach($subjects as $sub)
                        <th title="{{ $sub->name }}" rowspan="2">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
                        @endforeach
@@ -82,10 +82,10 @@
                         <th>2ND TERM TOTAL</th>
                         <th>3RD TERM TOTAL</th>
                         <th style="color: darkred">CUM Total</th>
-                        <th style="color: darkblue">CUM Average</th>
+                        <th style="color: darkblue">CUM Moyenne</th>
                         @endif--}}
                         <th style="color: darkred">Total</th>
-                        <th style="color: darkblue">Average</th>
+                        <th style="color: darkblue">Moyenne</th>
                         <th style="color: darkgreen">Position</th>
                     </tr>
                     </thead>
@@ -116,7 +116,7 @@
                 </table>
                 {{--Print Button--}}
                 <div class="text-center mt-4">
-                    <a target="_blank" href="{{  route('marks.print_tabulation', [$exam_id, $my_class_id, $section_id]) }}" class="btn btn-danger btn-lg"><i class="icon-printer mr-2"></i> Print Tabulation Sheet</a>
+                    <a target="_blank" href="{{  route('marks.print_tabulation', [$exam_id, $my_class_id, $section_id]) }}" class="btn btn-danger btn-lg"><i class="icon-printer mr-2"></i> Imprimer feuille de calcul</a>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ class Mk extends Qs
 
     public static function getRemarks()
     {
-        return ['Average', 'Credit', 'Distinction', 'Excellent', 'Fail', 'Fair', 'Good', 'Pass', 'Poor', 'Very Good', 'Very Poor'];
+        return [ 'Excellent', 'Passable', 'Bien', 'Très bien', 'Insuffisant'];
     }
 
     /** ADD ORDINAL SUFFIX TO POSITION **/
@@ -94,7 +94,7 @@ class Mk extends Qs
 
         if($term < 3){
             $exr = ExamRecord::where($d);
-            $avg = $exr->first()->ave ?: NULL;
+            $avg = $exr->first()->save ?: NULL;
             return $avg > 0 ? round($avg, 1) : $avg;
         }
 

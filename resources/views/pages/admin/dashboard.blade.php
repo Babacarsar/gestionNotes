@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('page_title', 'My Dashboard')
+@section('page_title', Mon Tableau de bord')
 
 @section('content')
-    <h2>WELCOME {{ Auth::user()->name }}. This is your DASHBOARD</h2>
+    <h2>WELCOME {{ Auth::user()->name }}. Voici votre Tableau de Bord</h2>
     @endsection

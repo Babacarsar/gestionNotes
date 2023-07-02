@@ -24,10 +24,11 @@ class SubjectCreate extends FormRequest
             'name' => 'required|string|min:3',
             'my_class_id' => 'required',
             'teacher_id' => 'required',
-            'slug' => 'nullable|string|min:3',
+            'slug' => 'nullable|string|min:2',
+            'coefficient' => 'required|numeric', // Ajouter cette ligne
         ];
     }
-
+    
     public function attributes()
     {
         return  [

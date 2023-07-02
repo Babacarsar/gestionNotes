@@ -24,7 +24,7 @@
             <li class="nav-item dropdown">
                 <a href="{{ route('login') }}" class="navbar-nav-link">
                     <i class="icon-user-tie"></i>
-                    <span class="d-md-none ml-2">My Account</span>
+                    <span class="d-md-none ml-2">Mon compte </span>
                 </a>
             </li>
 

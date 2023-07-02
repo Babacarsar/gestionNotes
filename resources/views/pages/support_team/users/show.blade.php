@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page_title', 'User Profile - '.$user->name)
+@section('page_title', 'Profile Utilisateur - '.$user->name)
 @section('content')
     <div class="row">
         <div class="col-md-3 text-center">
@@ -26,15 +26,15 @@
                             <table class="table table-bordered">
                                 <tbody>
                                 <tr>
-                                    <td class="font-weight-bold">Name</td>
+                                    <td class="font-weight-bold">Nom Complet</td>
                                     <td>{{ $user->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-weight-bold">Gender</td>
+                                    <td class="font-weight-bold">Genre</td>
                                     <td>{{ $user->gender }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-weight-bold">Address</td>
+                                    <td class="font-weight-bold">Addresse</td>
                                     <td>{{ $user->address }}</td>
                                 </tr>
                                 @if($user->email)
@@ -56,36 +56,24 @@
                                     </tr>
                                 @endif
                                 <tr>
-                                    <td class="font-weight-bold">Birthday</td>
+                                    <td class="font-weight-bold">Date de Naissance</td>
                                     <td>{{$user->dob }}</td>
                                 </tr>
                                 @if($user->bg_id)
                                     <tr>
-                                        <td class="font-weight-bold">Blood Group</td>
+                                        <td class="font-weight-bold">Groupe Sanguin</td>
                                         <td>{{$user->blood_group->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->nal_id)
                                     <tr>
-                                        <td class="font-weight-bold">Nationality</td>
+                                        <td class="font-weight-bold">Nationalité</td>
                                         <td>{{$user->nationality->name }}</td>
-                                    </tr>
-                                @endif
-                                @if($user->state_id)
-                                    <tr>
-                                        <td class="font-weight-bold">State</td>
-                                        <td>{{$user->state->name }}</td>
-                                    </tr>
-                                @endif
-                                @if($user->lga_id)
-                                    <tr>
-                                        <td class="font-weight-bold">LGA</td>
-                                        <td>{{$user->lga->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->user_type == 'parent')
                                     <tr>
-                                        <td class="font-weight-bold">Children/Ward</td>
+                                        <td class="font-weight-bold">Enfant</td>
                                         <td>
                                         @foreach(Qs::findMyChildren($user->id) as $sr)
                                             <span> - <a href="{{ route('students.show', Qs::hash($sr->id)) }}">{{ $sr->user->name.' - '.$sr->my_class->name. ' '.$sr->section->name }}</a></span><br>
@@ -97,7 +85,7 @@
 
                                 @if($user->user_type == 'teacher')
                                     <tr>
-                                        <td class="font-weight-bold">My Subjects</td>
+                                        <td class="font-weight-bold">Mes Cours</td>
                                         <td>
                                             @foreach(Qs::findTeacherSubjects($user->id) as $sub)
                                                 <span> - {{ $sub->name.' ('.$sub->my_class->name.')' }}</span><br>

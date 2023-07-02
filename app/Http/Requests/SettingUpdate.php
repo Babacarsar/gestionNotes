@@ -22,7 +22,7 @@ class SettingUpdate extends FormRequest
         return [
             'system_name' => 'required|string|min:10',
             'current_session' => 'required|string',
-            'address' => 'required|string|min:15',
+            'address' => 'required|string|min:3',
             'system_email' => 'sometimes|nullable|email',
             'lock_exam' => 'required',
             'logo' => 'sometimes|nullable|image|mimes:jpeg,gif,png,jpg|max:2048',

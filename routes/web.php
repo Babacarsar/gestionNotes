@@ -25,18 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         /*************** Students *****************/
         Route::group(['prefix' => 'students'], function(){
             Route::get('reset_pass/{st_id}', 'StudentRecordController@reset_pass')->name('st.reset_pass');
-            Route::get('graduated', 'StudentRecordController@graduated')->name('students.graduated');
-            Route::put('not_graduated/{id}', 'StudentRecordController@not_graduated')->name('st.not_graduated');
             Route::get('list/{class_id}', 'StudentRecordController@listByClass')->name('students.list')->middleware('teamSAT');
-
-            /* Promotions */
-            Route::post('promote_selector', 'PromotionController@selector')->name('students.promote_selector');
-            Route::get('promotion/manage', 'PromotionController@manage')->name('students.promotion_manage');
-            Route::delete('promotion/reset/{pid}', 'PromotionController@reset')->name('students.promotion_reset');
-            Route::delete('promotion/reset_all', 'PromotionController@reset_all')->name('students.promotion_reset_all');
-            Route::get('promotion/{fc?}/{fs?}/{tc?}/{ts?}', 'PromotionController@promotion')->name('students.promotion');
-            Route::post('promote/{fc}/{fs}/{tc}/{ts}', 'PromotionController@promote')->name('students.promote');
-
         });
 
         /*************** Users *****************/
@@ -79,19 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::put('/{ts}', 'TimeTableController@update_time_slot')->name('ts.update');
             });
 
-        });
-
-        /*************** Payments *****************/
-        Route::group(['prefix' => 'payments'], function(){
-
-            Route::get('manage/{class_id?}', 'PaymentController@manage')->name('payments.manage');
-            Route::get('invoice/{id}/{year?}', 'PaymentController@invoice')->name('payments.invoice');
-            Route::get('receipts/{id}', 'PaymentController@receipts')->name('payments.receipts');
-            Route::get('pdf_receipts/{id}', 'PaymentController@pdf_receipts')->name('payments.pdf_receipts');
-            Route::post('select_year', 'PaymentController@select_year')->name('payments.select_year');
-            Route::post('select_class', 'PaymentController@select_class')->name('payments.select_class');
-            Route::delete('reset_record/{id}', 'PaymentController@reset_record')->name('payments.reset_record');
-            Route::post('pay_now/{id}', 'PaymentController@pay_now')->name('payments.pay_now');
         });
 
         /*************** Pins *****************/
@@ -142,14 +118,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('subjects', 'SubjectController');
         Route::resource('grades', 'GradeController');
         Route::resource('exams', 'ExamController');
-        Route::resource('dorms', 'DormController');
-        Route::resource('payments', 'PaymentController');
 
     });
 
     /************************ AJAX ****************************/
     Route::group(['prefix' => 'ajax'], function() {
-        Route::get('get_lga/{state_id}', 'AjaxController@get_lga')->name('get_lga');
         Route::get('get_class_sections/{class_id}', 'AjaxController@get_class_sections')->name('get_class_sections');
         Route::get('get_class_subjects/{class_id}', 'AjaxController@get_class_subjects')->name('get_class_subjects');
     });

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page_title', 'Student Profile - '.$sr->user->name)
+@section('page_title', 'Profile de élève - '.$sr->user->name)
 @section('content')
 <div class="row">
     <div class="col-md-3 text-center">
@@ -26,15 +26,15 @@
                         <table class="table table-bordered">
                             <tbody>
                             <tr>
-                                <td class="font-weight-bold">Name</td>
+                                <td class="font-weight-bold">Nom</td>
                                 <td>{{ $sr->user->name }}</td>
                             </tr>
                             <tr>
-                                <td class="font-weight-bold">ADM_NO</td>
+                                <td class="font-weight-bold">Identifiant</td>
                                 <td>{{ $sr->adm_no }}</td>
                             </tr>
                             <tr>
-                                <td class="font-weight-bold">Class</td>
+                                <td class="font-weight-bold">Classe</td>
                                 <td>{{ $sr->my_class->name.' '.$sr->section->name }}</td>
                             </tr>
                             @if($sr->my_parent_id)
@@ -46,15 +46,15 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td class="font-weight-bold">Year Admitted</td>
+                                <td class="font-weight-bold">Année d'admission</td>
                                 <td>{{ $sr->year_admitted }}</td>
                             </tr>
                             <tr>
-                                <td class="font-weight-bold">Gender</td>
+                                <td class="font-weight-bold">Genre</td>
                                 <td>{{ $sr->user->gender }}</td>
                             </tr>
                             <tr>
-                                <td class="font-weight-bold">Address</td>
+                                <td class="font-weight-bold">Addresse</td>
                                 <td>{{ $sr->user->address }}</td>
                             </tr>
                             @if($sr->user->email)
@@ -70,40 +70,21 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td class="font-weight-bold">Birthday</td>
+                                <td class="font-weight-bold">Date de Naissance</td>
                                 <td>{{$sr->user->dob }}</td>
                             </tr>
                             @if($sr->user->bg_id)
                             <tr>
-                                <td class="font-weight-bold">Blood Group</td>
+                                <td class="font-weight-bold">Groupe Sanguin</td>
                                 <td>{{$sr->user->blood_group->name }}</td>
                             </tr>
                             @endif
                             @if($sr->user->nal_id)
                             <tr>
-                                <td class="font-weight-bold">Nationality</td>
+                                <td class="font-weight-bold">Nationalité</td>
                                 <td>{{$sr->user->nationality->name }}</td>
                             </tr>
                             @endif
-                            @if($sr->user->state_id)
-                            <tr>
-                                <td class="font-weight-bold">State</td>
-                                <td>{{$sr->user->state->name }}</td>
-                            </tr>
-                            @endif
-                            @if($sr->user->lga_id)
-                            <tr>
-                                <td class="font-weight-bold">LGA</td>
-                                <td>{{$sr->user->lga->name }}</td>
-                            </tr>
-                            @endif
-                            @if($sr->dorm_id)
-                                <tr>
-                                    <td class="font-weight-bold">Dormitory</td>
-                                    <td>{{$sr->dorm->name.' '.$sr->dorm_room_no }}</td>
-                                </tr>
-                            @endif
-
                             </tbody>
                         </table>
                     </div>

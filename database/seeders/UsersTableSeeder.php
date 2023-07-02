@@ -38,6 +38,16 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
 
+            ['name' => 'LePhare',
+            'email' => 'lephare@gmail.com',
+            'username' => 'lp',
+            'password' => $password,
+            'user_type' => 'super_admin',
+            'code' => strtoupper(Str::random(10)),
+            'remember_token' => Str::random(10),
+        ],
+
+
             ['name' => 'Admin KORA',
             'email' => 'admin@admin.com',
             'password' => $password,

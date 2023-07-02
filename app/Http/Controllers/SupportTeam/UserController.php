@@ -34,7 +34,6 @@ class UserController extends Controller
         $ut2 = $ut->where('level', '>', 2);
 
         $d['user_types'] = Qs::userIsAdmin() ? $ut2 : $ut;
-        $d['states'] = $this->loc->getStates();
         $d['users'] = $this->user->getPTAUsers();
         $d['nationals'] = $this->loc->getAllNationals();
         $d['blood_groups'] = $this->user->getBloodGroups();
@@ -44,8 +43,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $id = Qs::decodeHash($id);
-        $d['user'] = $this->user->find($id);
-        $d['states'] = $this->loc->getStates();
         $d['users'] = $this->user->getPTAUsers();
         $d['blood_groups'] = $this->user->getBloodGroups();
         $d['nationals'] = $this->loc->getAllNationals();

@@ -206,7 +206,7 @@ class MarkController extends Controller
 
             /** SubTotal Grade, Remark, Cum, CumAvg**/
 
-            $d['tex'.$exam->term] = $total = $tca + $exm;
+            $d['tex'.$exam->term] = $total = ($tca + $exm) / 3;
 
             if($total > 100){
                 $d['tex'.$exam->term] = $d['t1'] = $d['t2'] = $d['t3'] = $d['t4'] = $d['tca'] = $d['exm'] = NULL;
