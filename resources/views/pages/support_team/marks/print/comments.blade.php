@@ -6,7 +6,7 @@
             <td>  {{ $exr->t_comment ?: str_repeat('__', 40) }}</td>
         </tr>
         <tr>
-            <td><strong>COMMENTAIRE PRINCIPAL:</strong></td>
+            <td><strong>COMMENTAIRE DIRECTEUR:</strong></td>
             <td>  {{ $exr->p_comment ?: str_repeat('__', 40) }}</td>
         </tr>
         </tbody>

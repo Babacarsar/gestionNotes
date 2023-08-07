@@ -11,7 +11,7 @@
 
                 @if(Qs::userIsTeamSAT())
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label font-weight-semibold">Commentaire du professeur</label>
+                        <label class="col-lg-2 col-form-label font-weight-semibold">Commentaire du directeur</label>
                         <div class="col-lg-10">
                             <input name="t_comment" value="{{ $exr->t_comment }}"  type="text" class="form-control" placeholder="Commentaire du professeur">
                         </div>

@@ -9,13 +9,8 @@
         <th rowspan="2">COEFFICIENT<br>(20)</th>
         <th rowspan="2">MOYENNE x <br>(20)</th>
 
-        {{--@if($ex->term == 3) --}}{{-- 3rd Term --}}{{--
-        <th rowspan="2">TOTAL <br>(100%) 3<sup>RD</sup> TERM</th>
-        <th rowspan="2">1<sup>ST</sup> <br> TERM</th>
-        <th rowspan="2">2<sup>ND</sup> <br> TERM</th>
-        <th rowspan="2">CUM (300%) <br> 1<sup>ST</sup> + 2<sup>ND</sup> + 3<sup>RD</sup></th>
-        <th rowspan="2">CUM AVE</th>
-        @endif--}}
+       
+
 
         <th rowspan="2">RANG</th>
         <th rowspan="2">APPRECIATION</th>
@@ -34,21 +29,12 @@
                 <td>{{ ($mk->tca2) ?: '-' }}</td>
                 <td>{{ ($sub->coefficient) ?: '-' }}</td>
                 <td>
-                    @if($ex->term === 1) {{ ($mk->tex1) }}
-                    @elseif ($ex->term === 2) {{ ($mk->tex2) }}
-                    @elseif ($ex->term === 3) {{ ($mk->tex3) }}
+                    @if($ex->term === 1) {{ ($mk->tca2) }}
+                    @elseif ($ex->term === 2) {{ ($mk->tca2) }}
+                    @elseif ($ex->term === 3) {{ ($mk->tca2) }}
                     @else {{ '-' }}
                     @endif
                 </td>
-
-                {{--3rd Term--}}
-                {{-- @if($ex->term == 3)
-                     <td>{{ $mk->tex3 ?: '-' }}</td>
-                     <td>{{ Mk::getSubTotalTerm($student_id, $sub->id, 1, $mk->my_class_id, $year) }}</td>
-                     <td>{{ Mk::getSubTotalTerm($student_id, $sub->id, 2, $mk->my_class_id, $year) }}</td>
-                     <td>{{ $mk->cum ?: '-' }}</td>
-                     <td>{{ $mk->cum_ave ?: '-' }}</td>
-                 @endif--}}
 
                 {{--Grade, Subject Position & Remarks--}}
                 <td>{{$mk->sub_pos}}</td>
@@ -57,9 +43,12 @@
         </tr>
     @endforeach
     <tr>
-        <td colspan="5"><strong>NOMBRE DE POINTS OBTENUS: </strong> {{ $exr->total }}</td>
-        <td colspan="4"><strong>MOYENNE FINALE: </strong> {{ $exr->ave }}</td>
-
+        <td colspan="4"><strong>NOMBRE DE POINTS OBTENUS: </strong> {{ $exr->total }}</td>
+        <td colspan="3"><strong>MOYENNE : </strong> {{ $exr->ave }}</td>
+        @if($ex->term == 2)
+            {{-- Code for the 2nd Term --}}
+            <td colspan="4"><strong>MOYENNE GENERALE: </strong> {{ $exr->weighted_average }}</td>
+        @endif
     </tr>
     </tbody>
 </table>

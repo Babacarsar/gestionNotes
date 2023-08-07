@@ -45,8 +45,12 @@
         @endforeach
         <tr>
             <td colspan="2"><strong>TOTAL POINTS : </strong> {{ $exr->total }}</td>
-            <td colspan="3"><strong>MOYENNE FINALE: </strong> {{ $exr->ave }}</td>
-            <td colspan="3"><strong> RANG : </strong> {{ $exr->pos }}</td>
+            <td colspan="2"><strong>MOYENNE FINALE: </strong> {{ $exr->ave }}</td>
+            <td colspan="2"><strong> RANG : </strong> {{ $exr->pos }}</td>
+            @if($ex->term == 2)
+            {{-- Code for the 2nd Term --}}
+            <td colspan="2"><strong>MOYENNE GENERALE: </strong> {{ $exr->weighted_average }}</td>
+        @endif
         </tr>
     </tbody>
 </table>

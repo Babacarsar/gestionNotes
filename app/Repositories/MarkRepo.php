@@ -84,7 +84,7 @@ $coefficientSum = $subjects->sum('coefficient');
 // Calcul de la moyenne pondérée
 $weightedAverage = ($coefficientSum > 0) ? ($totalWeighted / $coefficientSum) : 0;
 
-return round($weightedAverage, 1);
+return round($weightedAverage, 2);
         /*unset($d['exam_id']);
         $mk = Mark::where($d); $count = 0;
 
@@ -118,6 +118,28 @@ return round($weightedAverage, 1);
         $total = $tex1 + $tex2 + $tex3;
 
         return ($total > 0) ? round($total/$count, 1) : 0;
+    }
+
+    public function getTotalExamAvg($exam, $st_id, $class_id, $section_id, $year)
+    {
+        $exams = ExamRecord::where('student_id', $st_id)
+        ->where('my_class_id', $class_id)
+        ->where('section_id', $section_id)
+        ->where('year', $year)
+        ->groupBy('exam_id')
+        ->selectRaw('exam_id, AVG(ave) as avg_ave')
+        ->get();
+
+$totalAvg = 0;
+$count = 0;
+
+foreach ($exams as $exam) {
+$totalAvg += $exam->avg_ave;
+$count++;
+}
+
+return ($count > 0) ? round($totalAvg / $count, 2) : 0;
+
     }
 
     public function getSubjectMark($exam, $class_id, $sub_id, $st_id, $year)

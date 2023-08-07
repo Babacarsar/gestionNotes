@@ -254,6 +254,8 @@ class MarkController extends Controller
             $d3['ave'] = $this->mark->getExamAvgTerm($exam, $st_id, $class_id, $section_id, $this->year);
             $d3['class_ave'] = $this->mark->getClassAvg($exam, $class_id, $this->year);
             $d3['pos'] = $this->mark->getPos($st_id, $exam, $class_id, $section_id, $this->year);
+            $d3['weighted_average'] = $this->mark->getTotalExamAvg($exam, $st_id, $class_id, $section_id, $this->year);
+            
 
             $this->exam->updateRecord($p, $d3);
         }
