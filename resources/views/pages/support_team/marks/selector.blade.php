@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="exam_id" class="col-form-label font-weight-bold">Examen:</label>
+                                <label for="exam_id" class="col-form-label font-weight-bold">Evaluation :</label>
                                 <select required id="exam_id" name="exam_id" data-placeholder="Selectioner Examen" class="form-control select">
                                     @foreach($exams as $ex)
                                         <option {{ $selected && $exam_id == $ex->id ? 'selected' : '' }} value="{{ $ex->id }}">{{ $ex->name }}</option>

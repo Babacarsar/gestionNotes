@@ -24,9 +24,11 @@
                             <div class="col-lg-9">
                                 <select data-placeholder="Choisir..." required name="current_session" id="current_session" class="select-search form-control">
                                     <option value=""></option>
-                                    @for($y=date('Y', strtotime('- 3 years')); $y<=date('Y', strtotime('+ 1 years')); $y++)
-                                        <option {{ ($s['current_session'] == (($y-=1).'-'.($y+=1))) ? 'selected' : '' }}>{{ ($y-=1).'-'.($y+=1) }}</option>
+                                    @for($y = date('Y', strtotime('- 2 years')); $y <= 2030; $y++)
+                                        <option {{ ($s['current_session'] == $y.'-'.($y+1)) ? 'selected' : '' }}>{{ $y.'-'.($y+1) }}</option>
                                     @endfor
+
+
                                 </select>
                             </div>
                         </div>
@@ -60,7 +62,7 @@
                                 <input name="term_ends" value="{{ $s['term_ends'] }}" type="text" class="form-control date-pick" placeholder="Date de fin de sem">
                             </div>
                             <div class="col-lg-3 mt-2">
-                                <span class="font-weight-bold font-italic">M-J-A or M/J/A </span>
+                                <span class="font-weight-bold font-italic">M-J-A ou M/J/A </span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -69,19 +71,19 @@
                                 <input name="term_begins" value="{{ $s['term_begins'] }}" type="text" class="form-control date-pick" placeholder="Date de debut prochain semestre">
                             </div>
                             <div class="col-lg-3 mt-2">
-                                <span class="font-weight-bold font-italic">M-J-A or M/J/A </span>
+                                <span class="font-weight-bold font-italic">M-J-A ou M/J/A </span>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lock_exam" class="col-lg-3 col-form-label font-weight-semibold">Lock Exam</label>
+                            <label for="lock_exam" class="col-lg-3 col-form-label font-weight-semibold">Verrouiller l'examen</label>
                             <div class="col-lg-3">
                                 <select class="form-control select" name="lock_exam" id="lock_exam">
-                                    <option {{ $s['lock_exam'] ? 'selected' : '' }} value="1">Yes</option>
-                                    <option {{ $s['lock_exam'] ?: 'selected' }} value="0">No</option>
+                                    <option {{ $s['lock_exam'] ? 'selected' : '' }} value="1">oui</option>
+                                    <option {{ $s['lock_exam'] ?: 'selected' }} value="0">Non</option>
                                 </select>
                             </div>
                             <div class="col-lg-6">
-                                    <span class="font-weight-bold font-italic text-info-800">{{ __('msg.lock_exam') }}</span>
+                                    <span class="font-weight-bold font-italic text-info-800">Le code PIN sera nécessaire pour afficher les résultats si le verrouillage de l'examen est défini</span>
                             </div>
                         </div>
                 </div>

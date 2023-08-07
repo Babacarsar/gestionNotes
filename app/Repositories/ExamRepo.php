@@ -7,6 +7,7 @@ use App\Models\ExamRecord;
 use App\Models\Grade;
 use App\Models\Mark;
 use App\Models\Skill;
+use App\Models\Subject;
 
 class ExamRepo
 {

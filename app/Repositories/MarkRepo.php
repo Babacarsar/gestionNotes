@@ -2,31 +2,37 @@
 
 namespace App\Repositories;
 
-use App\Models\Grade;
 use App\Models\Mark;
+use App\Models\Grade;
+use App\Models\Subject;
+use App\Models\ExamRecord;
 use App\Models\StudentRecord;
 
 class MarkRepo
 {
     public function getGrade($total, $class_type_id)
     {
-        if($total < 1) { return NULL; }
+        if ($total < 1) {
+            return NULL;
+        }
 
         $grades = Grade::where(['class_type_id' => $class_type_id])->get();
 
-        if($grades->count() > 0){
+        if ($grades->count() > 0) {
             $gr = $grades->where('mark_from', '<=', $total)->where('mark_to', '>=', $total);
             return $gr->count() > 0 ? $gr->first() : $this->getGrade2($total);
         }
+
         return $this->getGrade2($total);
     }
 
     public function getGrade2($total)
     {
         $grades = Grade::whereNull('class_type_id')->get();
-        if($grades->count() > 0){
+        if ($grades->count() > 0) {
             return $grades->where('mark_from', '<=', $total)->where('mark_to', '>=', $total)->first();
         }
+
         return NULL;
     }
 
@@ -58,14 +64,27 @@ class MarkRepo
 
     public function getExamAvgTerm($exam, $st_id, $class_id, $sec_id, $year)
     {
-        $d = ['student_id' => $st_id, 'exam_id' => $exam->id, 'my_class_id' => $class_id, 'section_id' => $sec_id, 'year' => $year];
+       // Requête pour récupérer tous les enregistrements Mark de l'étudiant pour l'examen, la classe, la section et l'année donnés
+    $marks = Mark::where('student_id', $st_id)
+    ->where('exam_id', $exam->id)
+    ->where('my_class_id', $class_id)
+    ->where('section_id', $sec_id)
+    ->where('year', $year)
+    ->get();
 
-        $tex = 'tex'.$exam->term;
+// Calcul de la somme des valeurs 'tex' dans les enregistrements
+$totalWeighted = $marks->sum('tex'.$exam->term);
 
-        $mk = Mark::where($d)->where($tex, '>', 0);
-        $avg = $mk->select($tex)->avg($tex);
-        return round($avg, 1);
+// Requête pour récupérer toutes les matières de la classe donnée
+$subjects = Subject::where('my_class_id', $class_id)->get();
 
+// Calcul de la somme des coefficients des matières de la classe donnée
+$coefficientSum = $subjects->sum('coefficient');
+
+// Calcul de la moyenne pondérée
+$weightedAverage = ($coefficientSum > 0) ? ($totalWeighted / $coefficientSum) : 0;
+
+return round($weightedAverage, 1);
         /*unset($d['exam_id']);
         $mk = Mark::where($d); $count = 0;
 
@@ -133,6 +152,7 @@ class MarkRepo
     public function getClassAvg($exam, $class_id, $year)
     {
         $d = [ 'exam_id' => $exam->id, 'my_class_id' => $class_id, 'year' => $year ];
+        
         $tex = 'tex'.$exam->term;
 
         $avg = Mark::where($d)->select($tex)->avg($tex);

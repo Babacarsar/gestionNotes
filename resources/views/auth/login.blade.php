@@ -1,7 +1,7 @@
 @extends('layouts.login_master') 
 
 @section('content') 
-     
+<div class="page-content login-cover">
 
         <!-- Main content -->
         <div class="content-wrapper">
@@ -20,7 +20,7 @@
                                 <span class="d-block text-muted">Vos Identifiants</span> 
                             </div>
 
-                            @if ($errors->any()) // Vérifie s'il y a des erreurs
+                            @if ($errors->any()) 
                                 <div class="alert alert-danger alert-styled-left alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                                     <span class="font-weight-semibold">Oops!</span> {{ implode('<br>', $errors->all()) }} 

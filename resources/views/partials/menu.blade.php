@@ -1,4 +1,16 @@
-<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+<style>
+    /* Barre de navigation rouge */
+    .custom-navbar-red {
+        background-color: red; /* Couleur de fond rouge */
+        color: white; /* Couleur du texte blanc */
+    }
+    
+    /* Sidebar bleue */
+    .custom-sidebar-blue {
+        background-color: #3498db; /* Couleur de fond bleue */
+    }
+</style>
+<div class="sidebar sidebar-dark custom-sidebar-blue sidebar-main sidebar-expand-md">
 
     <!-- Sidebar mobile toggler -->
     <div class="sidebar-mobile-toggler text-center">
@@ -148,7 +160,7 @@
                             {{--Marks Manage--}}
                             <li class="nav-item">
                                 <a href="{{ route('marks.index') }}"
-                                   class="nav-link {{ in_array(Route::currentRouteName(), ['marks.index']) ? 'active' : '' }}">Marks</a>
+                                   class="nav-link {{ in_array(Route::currentRouteName(), ['marks.index']) ? 'active' : '' }}">Notes</a>
                             </li>
 
                             {{--Marksheet--}}

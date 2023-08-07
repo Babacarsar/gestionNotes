@@ -1,8 +1,16 @@
 <!-- Main navbar -->
-<div class="navbar navbar-expand-md navbar-dark">
+<style>
+    /* Barre de navigation rouge */
+    .custom-navbar-blue {
+        background-color: blue ; /* Couleur de fond rouge */
+        color: white; /* Couleur du texte blanc */
+    }
+</style>
+<div class="navbar navbar-expand-md custom-navbar-blue navbar-dark">
     <div class="mt-2 mr-5">
         <a href="{{ route('dashboard') }}" class="d-inline-block">
-            <h4 class="text-bold text-white">{{ Qs::getSystemName() }}</h4>
+        <h4 class="text-bold text-white center-text">{{ Qs::getSystemName() }}</h4> 
+        </a>
         </a>
     </div>
 
@@ -14,27 +22,9 @@
 
     <div class="collapse navbar-collapse" id="navbar-mobile">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a href="{{ route('home') }}" class="navbar-nav-link">
-                    <i class="icon-home"></i>
-                    <span class="d-md-none ml-2">Home</span>
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="{{ route('login') }}" class="navbar-nav-link">
-                    <i class="icon-user-tie"></i>
-                    <span class="d-md-none ml-2">Mon compte </span>
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="navbar-nav-link">
-                    <i class="icon-cog3"></i>
-                    <span class="d-md-none ml-2">Options</span>
-                </a>
-            </li>
+            <!-- Vos éléments de menu ici -->
         </ul>
     </div>
 </div>
 <!-- /main navbar -->
+

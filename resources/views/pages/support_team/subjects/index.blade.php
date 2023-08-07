@@ -1,124 +1,140 @@
 @extends('layouts.master')
-@section('page_title', 'Tabulation Sheet')
+@section('page_title', 'Gestion des matières')
 @section('content')
-    <div class="card">
-        <div class="card-header header-elements-inline">
-            <h5 class="card-title"><i class="icon-books mr-2"></i> Tabulation Sheet</h5>
-            {!! Qs::getPanelOptions() !!}
-        </div>
-
-        <div class="card-body">
-        <form method="post" action="{{ route('marks.tabulation_select') }}">
-                    @csrf
-                    <div class="row">
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exam_id" class="col-form-label font-weight-bold">Exam:</label>
-                                            <select required id="exam_id" name="exam_id" class="form-control select" data-placeholder="Select Exam">
-                                                @foreach($exams as $exm)
-                                                    <option {{ ($selected && $exam_id == $exm->id) ? 'selected' : '' }} value="{{ $exm->id }}">{{ $exm->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="my_class_id" class="col-form-label font-weight-bold">Class:</label>
-                                            <select onchange="getClassSections(this.value)" required id="my_class_id" name="my_class_id" class="form-control select" data-placeholder="Select Class">
-                                                <option value=""></option>
-                                                @foreach($my_classes as $c)
-                                                    <option {{ ($selected && $my_class_id == $c->id) ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="section_id" class="col-form-label font-weight-bold">Section:</label>
-                                <select required id="section_id" name="section_id" data-placeholder="Select Class First" class="form-control select">
-                                    @if($selected)
-                                        @foreach($sections->where('my_class_id', $my_class_id) as $s)
-                                            <option {{ $section_id == $s->id ? 'selected' : '' }} value="{{ $s->id }}">{{ $s->name }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-2 mt-4">
-                            <div class="text-right mt-1">
-                                <button type="submit" class="btn btn-primary">View Sheet <i class="icon-paperplane ml-2"></i></button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </form>
-        </div>
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h6 class="card-title">Gérer les Matières</h6>
+        {!! Qs::getPanelOptions() !!}
     </div>
 
-    {{--if Selction Has Been Made --}}
-
-    @if($selected)
-        <div class="card">
-            <div class="card-header">
-                <h6 class="card-title font-weight-bold">Tabulation Sheet for {{ $my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' }}</h6>
-            </div>
-            <div class="card-body">
-                <table class="table table-responsive table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>NAMES_OF_STUDENTS_IN_CLASS</th>
-                       @foreach($subjects as $sub)
-                       <th title="{{ $sub->name }}" rowspan="2">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
-                       @endforeach
-                        {{--@if($ex->term == 3)
-                        <th>1ST TERM TOTAL</th>
-                        <th>2ND TERM TOTAL</th>
-                        <th>3RD TERM TOTAL</th>
-                        <th style="color: darkred">CUM Total</th>
-                        <th style="color: darkblue">CUM Average</th>
-                        @endif--}}
-                        <th style="color: darkred">Total</th>
-                        <th style="color: darkblue">Average</th>
-                        <th style="color: darkgreen">Position</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($students as $s)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td style="text-align: center">{{ $s->user->name }}</td>
-                            @foreach($subjects as $sub)
-                            <td>{{ $marks->where('student_id', $s->user_id)->where('subject_id', $sub->id)->first()->$tex ?? '-' ?: '-' }}</td>
-                            @endforeach
-
-                            {{--@if($ex->term == 3)
-                                --}}{{--1st term Total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 1, $year) ?? '-' }}</td>
-                            --}}{{--2nd Term Total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 2, $year) ?? '-' }}</td>
-                            --}}{{--3rd Term total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 3, $year) ?? '-' }}</td>
-                            @endif--}}
-
-                            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->total ?: '-' }}</td>
-                            <td style="color: darkblue">{{ $exr->where('student_id', $s->user_id)->first()->ave ?: '-' }}</td>
-                            <td style="color: darkgreen">{!! Mk::getSuffix($exr->where('student_id', $s->user_id)->first()->pos) ?: '-' !!}</td>
-                        </tr>
+    <div class="card-body">
+        <ul class="nav nav-tabs nav-tabs-highlight">
+            <li class="nav-item"><a href="#new-subject" class="nav-link active" data-toggle="tab">Ajouter une Matière</a></li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Gérer les Matières</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    @foreach($my_classes as $c)
+                        <a href="#c{{ $c->id }}" class="dropdown-item" data-toggle="tab">{{ $c->name }}</a>
                     @endforeach
-                    </tbody>
-                </table>
-                {{--Print Button--}}
-                <div class="text-center mt-4">
-                    <a target="_blank" href="{{  route('marks.print_tabulation', [$exam_id, $my_class_id, $section_id]) }}" class="btn btn-danger btn-lg"><i class="icon-printer mr-2"></i> Print Tabulation Sheet</a>
+                </div>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane show active fade" id="new-subject">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form class="ajax-store" method="post" action="{{ route('subjects.store') }}">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="name" class="col-lg-3 col-form-label font-weight-semibold">Nom <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <input id="name" name="name" value="{{ old('name') }}" required type="text" class="form-control" placeholder="Nom de la matière">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="slug" class="col-lg-3 col-form-label font-weight-semibold">Nom court <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <input id="slug" required name="slug" value="{{ old('slug') }}" type="text" class="form-control" placeholder="Ex. B.Eng">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label for="coefficient" class="col-lg-3 col-form-label font-weight-semibold">Coefficient <span class="text-danger">*</span></label>
+                                    <div class="col-lg-9">
+                                        <input id="coefficient" required name ="coefficient" value="{{ old('coefficient') }}" type="number" class="form-control" placeholder="Coefficient de la matière">
+                                    </div>
+                                </div>
+
+
+                            <div class="form-group row">
+                                <label for="my_class_id" class="col-lg-3 col-form-label font-weight-semibold">Sélectionner la Classe <span class="text-danger">*</span></label>
+                                <div class="col-lg-9">
+                                    <select required data-placeholder="Sélectionner la Classe" class="form-control select" name="my_class_id" id="my_class_id">
+                                        <option value=""></option>
+                                        @foreach($my_classes as $c)
+                                            <option {{ old('my_class_id') == $c->id ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="teacher_id" class="col-lg-3 col-form-label font-weight-semibold">Enseignant <span class="text-danger"></span></label>
+                                <div class="col-lg-9">
+                                    <select  data-placeholder="Sélectionner l'Enseignant" class="form-control select-search" name="teacher_id" id="teacher_id">
+                                        <option value=""></option>
+                                        @foreach($teachers as $t)
+                                            <option {{ old('teacher_id') == Qs::hash($t->id) ? 'selected' : '' }} value="{{ Qs::hash($t->id) }}">{{ $t->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Valider <i class="icon-paperplane ml-2"></i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+            @foreach($my_classes as $c)
+                <div class="tab-pane fade" id="c{{ $c->id }}">
+                    <table class="table datatable-button-html5-columns">
+                        <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Nom</th>
+                            <th>Nom court</th>
+                            <th>Classe</th>
+                            <th>Enseignant</th>
+                            <th>Coefficient</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($subjects->where('my_class.id', $c->id) as $s)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $s->name }}</td>
+                                <td>{{ $s->slug }}</td>
+                                <td>{{ $s->my_class->name }}</td>
+                                <td></td>
+                                <td>{{ $s->coefficient }}</td>
+                                <td class="text-center">
+                                    <div class="list-icons">
+                                        <div class="dropdown">
+                                            <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                {{--edit--}}
+                                                @if(Qs::userIsTeamSA())
+                                                    <a href="{{ route('subjects.edit', $s->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Modifier</a>
+                                                @endif
+                                                {{--Delete--}}
+                                                @if(Qs::userIsSuperAdmin())
+                                                    <a id="{{ $s->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Supprimer</a>
+                                                    <form method="post" id="item-delete-{{ $s->id }}" action="{{ route('subjects.destroy', $s->id) }}" class="hidden">@csrf @method('delete')</form>
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endforeach
+
         </div>
-    @endif
+    </div>
+</div>
+
+{{--Liste des matières se termine ici--}}
+
 @endsection

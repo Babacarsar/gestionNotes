@@ -25,12 +25,12 @@ class UsersTableSeeder extends Seeder
 
     protected function createNewUsers()
     {
-        $password = Hash::make('cj'); // Default user password
+        $password = Hash::make('lls'); // Default user password
 
         $d = [
 
-            ['name' => 'CJ Inspired',
-                'email' => 'cj@cj.com',
+            ['name' => 'cj',
+                'email' => 'ba66bacar@gmail',
                 'username' => 'cj',
                 'password' => $password,
                 'user_type' => 'super_admin',
@@ -38,17 +38,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
 
-            ['name' => 'LePhare',
-            'email' => 'lephare@gmail.com',
-            'username' => 'lp',
-            'password' => $password,
-            'user_type' => 'super_admin',
-            'code' => strtoupper(Str::random(10)),
-            'remember_token' => Str::random(10),
-        ],
-
-
-            ['name' => 'Admin KORA',
+            ['name' => 'Khalil',
             'email' => 'admin@admin.com',
             'password' => $password,
             'user_type' => 'admin',
@@ -73,16 +63,7 @@ class UsersTableSeeder extends Seeder
                 'password' => $password,
                 'code' => strtoupper(Str::random(10)),
                 'remember_token' => Str::random(10),
-            ],
-
-            ['name' => 'Accountant Jeff',
-                'email' => 'accountant@accountant.com',
-                'user_type' => 'accountant',
-                'username' => 'accountant',
-                'password' => $password,
-                'code' => strtoupper(Str::random(10)),
-                'remember_token' => Str::random(10),
-            ],
+            ]
         ];
         DB::table('users')->insert($d);
     }
@@ -90,7 +71,7 @@ class UsersTableSeeder extends Seeder
     protected function createManyUsers(int $count)
     {
         $data = [];
-        $user_type = Qs::getAllUserTypes(['super_admin', 'librarian', 'student']);
+        $user_type = Qs::getAllUserTypes(['super_admin',  'student']);
 
         for($i = 1; $i <= $count; $i++){
 

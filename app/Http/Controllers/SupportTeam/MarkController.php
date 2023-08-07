@@ -14,6 +14,7 @@ use App\Repositories\StudentRepo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\Subject;
 
 class MarkController extends Controller
 {
@@ -200,15 +201,18 @@ class MarkController extends Controller
 
                 $d['t1'] = $t1 = $mks['t1_'.$mk->id];
                 $d['t2'] = $t2 = $mks['t2_'.$mk->id];
-                $d['tca'] = $tca = $t1 + $t2;
+                $d['tca'] = $tca = ($t1 + $t2) / 2;
                 $d['exm'] = $exm = $mks['exm_'.$mk->id];
-
+                $d['tca2'] =$tca2 = ($tca + $exm) / 2; // Calcul de tca2 en additionnant tca et exm
+                $subject = Subject::find($subject_id);
+                $coefficient = $subject->coefficient;
+                $d['tex'.$exam->term] = $total = $tca2 * $coefficient;
 
             /** SubTotal Grade, Remark, Cum, CumAvg**/
 
-            $d['tex'.$exam->term] = $total = ($tca + $exm) / 3;
+            
 
-            if($total > 100){
+            if($total > 120){
                 $d['tex'.$exam->term] = $d['t1'] = $d['t2'] = $d['t3'] = $d['t4'] = $d['tca'] = $d['exm'] = NULL;
             }
 
@@ -221,8 +225,8 @@ class MarkController extends Controller
                 $d['cum_ave'] = $cav = $this->mark->getSubCumAvg($total, $st_id, $subject_id, $class_id, $this->year);
                 $grade = $this->mark->getGrade(round($cav), $class_type->id);
             }*/
-            $grade = $this->mark->getGrade($total, $class_type->id);
-            $d['grade_id'] = $grade ? $grade->id : NULL;
+            $d['grade_id'] = ($total > 0) ? $this->mark->getGrade($total / $coefficient, $class_type->id)->id : NULL;
+
 
             $this->exam->updateMark($mk->id, $d);
         }

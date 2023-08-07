@@ -94,7 +94,7 @@ class Mk extends Qs
 
         if($term < 3){
             $exr = ExamRecord::where($d);
-            $avg = $exr->first()->save ?: NULL;
+            $avg = $exr->first()->ave ?: NULL;
             return $avg > 0 ? round($avg, 1) : $avg;
         }
 
@@ -102,6 +102,8 @@ class Mk extends Qs
         $avg = $mk->select('tex3')->avg('tex3');
         return round($avg, 1);
     }
+
+    
 
     public static function getTermTotal($st_id, $term, $year)
     {

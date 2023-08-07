@@ -1,9 +1,10 @@
 @extends('layouts.master')
-@section('page_title', 'Feuille De calcul')
+@section('page_title', 'Relevé de notes')
 @section('content')
+
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title"><i class="icon-books mr-2"></i> Feuille De calcul</h5>
+            <h5 class="card-title"><i class="icon-books mr-2"></i> Relevé de notes</h5>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -14,7 +15,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="exam_id" class="col-form-label font-weight-bold">Examen:</label>
+                                            <label for="exam_id" class="col-form-label font-weight-bold">Evaluation:</label>
                                             <select required id="exam_id" name="exam_id" class="form-control select" data-placeholder="Selectionner Examen">
                                                 @foreach($exams as $exm)
                                                     <option {{ ($selected && $exam_id == $exm->id) ? 'selected' : '' }} value="{{ $exm->id }}">{{ $exm->name }}</option>
@@ -66,53 +67,75 @@
     @if($selected)
         <div class="card">
             <div class="card-header">
-                <h6 class="card-title font-weight-bold">Tabulation Sheet for {{ $my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' }}</h6>
+                <h6 class="card-title font-weight-bold">Relevé de notes de{{ $my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' }}</h6>
             </div>
             <div class="card-body">
-                <table class="table table-responsive table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nom de l'étudiant</th>
-                       @foreach($subjects as $sub)
-                       <th title="{{ $sub->name }}" rowspan="2">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
-                       @endforeach
-                        {{--@if($ex->term == 3)
-                        <th>1ST TERM TOTAL</th>
-                        <th>2ND TERM TOTAL</th>
-                        <th>3RD TERM TOTAL</th>
-                        <th style="color: darkred">CUM Total</th>
-                        <th style="color: darkblue">CUM Moyenne</th>
-                        @endif--}}
-                        <th style="color: darkred">Total</th>
-                        <th style="color: darkblue">Moyenne</th>
-                        <th style="color: darkgreen">Position</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($students as $s)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td style="text-align: center">{{ $s->user->name }}</td>
-                            @foreach($subjects as $sub)
-                            <td>{{ $marks->where('student_id', $s->user_id)->where('subject_id', $sub->id)->first()->$tex ?? '-' ?: '-' }}</td>
-                            @endforeach
+                <table class="table table-responsive table-striped  style= width:80%; border-collapse:collapse; border: 1px solid #000; margin: 20px auto;" border="1">
+                   <!-- ... Le reste de votre code ... -->
 
-                            {{--@if($ex->term == 3)
-                                --}}{{--1st term Total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 1, $year) ?? '-' }}</td>
-                            --}}{{--2nd Term Total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 2, $year) ?? '-' }}</td>
-                            --}}{{--3rd Term total--}}{{--
-                            <td>{{ Mk::getTermTotal($s->user_id, 3, $year) ?? '-' }}</td>
-                            @endif--}}
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Nom de l'étudiant</th>
+        @foreach($subjects as $sub)
+            <th colspan="2" style="text-align: center;">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
+        @endforeach
+        {{--@if($ex->term == 3)
+        <th>1ST TERM TOTAL</th>
+        <th>2ND TERM TOTAL</th>
+        <th>3RD TERM TOTAL</th>
+        <th style="color: darkred">CUM Total</th>
+        <th style="color: darkblue">CUM Moyenne</th>
+        @endif--}}
+        <th style="color: darkred">Moyenne</th>
+        <th style="color: darkblue">Total</th>
+        <th style="color: darkgreen">Position</th>
+    </tr>
 
-                            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->total ?: '-' }}</td>
-                            <td style="color: darkblue">{{ $exr->where('student_id', $s->user_id)->first()->ave ?: '-' }}</td>
-                            <td style="color: darkgreen">{!! Mk::getSuffix($exr->where('student_id', $s->user_id)->first()->pos) ?: '-' !!}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
+    <tr>
+        <th></th>
+        <th></th>
+        @foreach($subjects as $sub)
+            <th>Devoir</th>
+            <th>Compo</th>
+        @endforeach
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach($students as $s)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td style="text-align: center">{{ $s->user->name }}</td>
+            @foreach($subjects as $sub)
+                @php
+                    $mark = $marks->where('student_id', $s->user_id)->where('subject_id', $sub->id)->first();
+                @endphp
+
+                <td>{{ $mark->tca ?? '-' }}</td>
+                <td>{{ $mark->exm ?? '-' }}</td>
+            @endforeach
+
+            {{--@if($ex->term == 3)
+                --}}{{--1st term Total--}}{{--
+            <td>{{ Mk::getTermTotal($s->user_id, 1, $year) ?? '-' }}</td>
+            --}}{{--2nd Term Total--}}{{--
+            <td>{{ Mk::getTermTotal($s->user_id, 2, $year) ?? '-' }}</td>
+            --}}{{--3rd Term total--}}{{--
+            <td>{{ Mk::getTermTotal($s->user_id, 3, $year) ?? '-' }}</td>
+            @endif--}}
+            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->ave ?: '-' }}</td>
+            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->total ?: '-' }}</td>
+            <td style="color: darkgreen">{!! Mk::getSuffix($exr->where('student_id', $s->user_id)->first()->pos) ?: '-' !!}</td>
+        </tr>
+    @endforeach
+</tbody>
+
+<!-- ... Le reste de votre code ... -->
+
                 </table>
                 {{--Print Button--}}
                 <div class="text-center mt-4">

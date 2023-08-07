@@ -28,7 +28,7 @@ class StudentRecordCreate extends FormRequest
             'phone' => 'sometimes|nullable|string|min:6|max:20',
             'email' => 'sometimes|nullable|email|max:100|unique:users',
             'photo' => 'sometimes|nullable|image|mimes:jpeg,gif,png,jpg|max:2048',
-            'address' => 'required|string|min:6|max:120',
+            'address' => 'required|string|min:2|max:120',
             'bg_id' => 'sometimes|nullable',
             'nal_id' => 'required',
             'my_class_id' => 'required',

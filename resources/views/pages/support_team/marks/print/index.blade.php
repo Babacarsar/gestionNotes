@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Student Marksheet - {{ $sr->user->name }}</title>
+    <title>Bulletin de l'élève - {{ $sr->user->name }}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/my_print.css') }}" />
 </head>
 <body>
@@ -16,13 +16,9 @@
                    {{-- <strong><span style="color: #1b0c80; font-size: 20px;">MINNA, NIGER STATE</span></strong><br/>--}}
                     <strong><span
                                 style="color: #000; font-size: 15px;"><i>{{ ucwords($s['address']) }}</i></span></strong><br/>
-                    <strong><span style="color: #000; font-size: 15px;"> REPORT SHEET {{ '('.strtoupper($class_type->name).')' }}
+                    <strong><span style="color: #000; font-size: 15px;"> BULLETIN DE NOTE {{ '('.strtoupper($class_type->name).')' }}
                     </span></strong>
-                </td>
-                <td style="width: 100px; height: 100px; float: left;">
-                    <img src="{{ $sr->user->photo }}"
-                         alt="..."  width="100" height="100">
-                </td>
+              
             </tr>
         </table>
         <br/>
@@ -40,7 +36,7 @@
         {{--@include('pages.support_team.marks.print.grading')--}}
 
         {{-- TRAITS - PSCHOMOTOR & AFFECTIVE --}}
-        @include('pages.support_team.marks.print.skills')
+    
 
         <div style="margin-top: 25px; clear: both;"></div>
 

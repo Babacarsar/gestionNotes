@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}"> // Jeton CSRF pour la protection des formulaires
 
-    <title>{{ config('app.name', 'Le Phare') }}</title> // Titre de la page
+    <title>{{ config('app.name', 'Luminis Leeru Sangabi') }}</title> // Titre de la page
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script> // Inclusion du script JavaScript

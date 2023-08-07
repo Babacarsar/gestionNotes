@@ -13,15 +13,7 @@
                 @csrf @method('PUT')
                 <h6>Données personelles</h6>
                 <fieldset>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="user_type"> Selectionner Utilisateur: <span class="text-danger">*</span></label>
-                                <select disabled="disabled" class="form-control select" id="user_type">
-                                    <option value="">{{ strtoupper($user->user_type) }}</option>
-                                </select>
-                            </div>
-                        </div>
+                   
 
                         <div class="col-md-4">
                             <div class="form-group">

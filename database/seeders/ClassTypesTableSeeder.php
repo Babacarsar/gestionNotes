@@ -18,7 +18,7 @@ class ClassTypesTableSeeder extends Seeder
 
         $data = [
             ['name' => 'College', 'code' => 'C'],
-            ['name' => 'lycee', 'code' => 'L'],
+            ['name' => 'Lycée', 'code' => 'L'],
         ];
 
         DB::table('class_types')->insert($data);

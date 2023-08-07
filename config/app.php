@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Le Phare'),
+    'name' => env('APP_NAME', 'Luminus Leeru Sangabi'),
 
     /*
     |--------------------------------------------------------------------------
@@ -211,7 +211,6 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Qs' => App\Helpers\Qs::class,
         'Mk' => App\Helpers\Mk::class,
-        'Pay' => App\Helpers\Pay::class,
     ],
 
 ];

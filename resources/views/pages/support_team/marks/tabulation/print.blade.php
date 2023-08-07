@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Tabulation Sheet - {{ $my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' }}</title>
+    <title>Relevé de notes de  - {{ $my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' }}</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/print_tabulation.css') }}" />
 </head>
 <body>
@@ -16,7 +16,7 @@
                     {{-- <strong><span style="color: #1b0c80; font-size: 20px;">MINNA, NIGER STATE</span></strong><br/>--}}
                     <strong><span
                                 style="color: #000; font-size: 15px;"><i>{{ ucwords($s['address']) }}</i></span></strong><br/>
-                    <strong><span style="color: #000; font-size: 15px;"> TABULATION SHEET FOR {{ strtoupper($my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' ) }}
+                    <strong><span style="color: #000; font-size: 15px;"> Relevé de notes de  {{ strtoupper($my_class->name.' '.$section->name.' - '.$ex->name.' ('.$year.')' ) }}
                     </span></strong>
                 </td>
             </tr>
@@ -31,50 +31,54 @@
 
         {{-- Tabulation Begins --}}
         <table style="width:100%; border-collapse:collapse; border: 1px solid #000; margin: 10px auto;" border="1">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>NAMES_OF_STUDENTS_IN_CLASS</th>
-                @foreach($subjects as $sub)
-                    <th rowspan="2">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
-                @endforeach
-             {{--   @if($ex->term == 3)
-                    <th>1ST TERM TOTAL</th>
-                    <th>2ND TERM TOTAL</th>
-                    <th>3RD TERM TOTAL</th>
-                    <th style="color: darkred">CUM Total</th>
-                    <th style="color: darkblue">CUM Average</th>
-                @endif--}}
-                <th style="color: darkred">Total</th>
-                <th style="color: darkblue">Average</th>
-                <th style="color: darkgreen">Position</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($students as $s)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td style="text-align: center">{{ $s->user->name }}</td>
-                    @foreach($subjects as $sub)
-                        <td>{{ $marks->where('student_id', $s->user_id)->where('subject_id', $sub->id)->first()->$tex ?? '-' ?: '-' }}</td>
-                    @endforeach
+       <!-- ... Le reste de votre code ... -->
 
-                    {{--@if($ex->term == 3)
-                        --}}{{--1st term Total--}}{{--
-                        <td>{{ Mk::getTermTotal($s->user_id, 1, $year) ?: '-' }}</td>
-                        --}}{{--2nd Term Total--}}{{--
-                        <td>{{ Mk::getTermTotal($s->user_id, 2, $year) ?: '-' }}</td>
-                        --}}{{--3rd Term total--}}{{--
-                        <td>{{ Mk::getTermTotal($s->user_id, 3, $year) ?: '-' }}</td>
-                    @endif--}}
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Nom de l'étudiant</th>
+        @foreach($subjects as $sub)
+            <th colspan="2" style="text-align: center;">{{ strtoupper($sub->slug ?: $sub->name) }}</th>
+        @endforeach
+        <th style="color: darkred">Moyenne</th>
+        <th style="color: darkblue">Total</th>
+        <th style="color: darkgreen">Position</th>
+    </tr>
 
-                    <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->total ?: '-' }}</td>
-                    <td style="color: darkblue">{{ $exr->where('student_id', $s->user_id)->first()->ave ?: '-' }}</td>
-                    <td style="color: darkgreen">{!! Mk::getSuffix($exr->where('student_id', $s->user_id)->first()->pos) ?: '-' !!}</td>
-                </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        @foreach($subjects as $sub)
+            <th>Devoir</th>
+            <th>Compo</th>
+        @endforeach
+    </tr>
+</thead>
+
+<tbody>
+    @foreach($students as $s)
+        <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td style="text-align: center">{{ $s->user->name }}</td>
+            @foreach($subjects as $sub)
+                @php
+                    $mark = $marks->where('student_id', $s->user_id)->where('subject_id', $sub->id)->first();
+                @endphp
+
+                <td>{{ $mark->tca ?? '-' }}</td>
+                <td>{{ $mark->exm ?? '-' }}</td>
             @endforeach
-            </tbody>
-        </table>
+
+            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->ave ?: '-' }}</td>
+            <td style="color: darkred">{{ $exr->where('student_id', $s->user_id)->first()->total ?: '-' }}</td>
+            <td style="color: darkgreen">{!! Mk::getSuffix($exr->where('student_id', $s->user_id)->first()->pos) ?: '-' !!}</td>
+        </tr>
+    @endforeach
+</tbody>
+
+<!-- ... Le reste de votre code ... -->
+
+                </table>
     </div>
 </div>
 

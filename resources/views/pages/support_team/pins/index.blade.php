@@ -10,7 +10,7 @@
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">
-                <li class="nav-item"><a href="#valid-pins" class="nav-link active" data-toggle="tab">Valid Pins</a></li>
+                <li class="nav-item"><a href="#valid-pins" class="nav-link active" data-toggle="tab">Valider code Pins</a></li>
                 <li class="nav-item"><a href="#used-pins" class="nav-link" data-toggle="tab"> Used Pins</a></li>
             </ul>
 

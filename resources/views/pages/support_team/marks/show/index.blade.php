@@ -24,7 +24,7 @@
 
                         {{--Print Button--}}
                         <div class="text-center mt-3">
-                            <a target="_blank" href="{{ route('marks.print', [Qs::hash($student_id), $ex->id, $year]) }}" class="btn btn-secondary btn-lg">Print Marksheet <i class="icon-printer ml-2"></i></a>
+                            <a target="_blank" href="{{ route('marks.print', [Qs::hash($student_id), $ex->id, $year]) }}" class="btn btn-secondary btn-lg"> Imprimer bulletin de note <i class="icon-printer ml-2"></i></a>
                         </div>
 
                     </div>
@@ -34,8 +34,6 @@
             {{--    EXAM COMMENTS   --}}
             @include('pages.support_team.marks.show.comments')
 
-            {{-- SKILL RATING --}}
-            @include('pages.support_team.marks.show.skills')
 
         @endforeach
     @endforeach

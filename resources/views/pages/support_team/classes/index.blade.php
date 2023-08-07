@@ -65,7 +65,7 @@
                             <div class="alert alert-info border-0 alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
 
-                                <span>Lorsqu'une classe est créée, une section sera automatiquement créée pour la classe, vous pouvez la modifier ou ajouter plus de sections à la classe à <a target="_blank" href="{{ route('sections.index') }}">Manage Sections</a></span>
+                                <span>Lorsqu'une classe est créée, une section sera automatiquement créée pour la classe, vous pouvez la modifier ou ajouter plus de sections à la classe à <a target="_blank" href="{{ route('sections.index') }}">Gerer les  Sections</a></span>
                             </div>
                         </div>
                     </div>

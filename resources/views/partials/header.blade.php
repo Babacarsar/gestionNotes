@@ -1,4 +1,4 @@
-<div id="page-header" class="page-header page-header-light">
+<div id="page-header" class="page-header page-header-blue">
     <div class="page-header-content header-elements-md-inline">
         <div class="page-title d-flex">
             <h4><i class="icon-plus-circle2 mr-2"></i> <span class="font-weight-semibold">@yield('page_title')</span></h4>

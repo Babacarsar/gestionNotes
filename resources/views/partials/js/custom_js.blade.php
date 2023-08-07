@@ -104,8 +104,8 @@
 
     function confirmDelete(id) {
         swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this item!",
+            title: "Etes vous sure?",
+            text: " Une fois supprimé, vous ne pourrez plus récupérer cet élément!",
             icon: "warning",
             buttons: true,
             dangerMode: true
@@ -118,8 +118,8 @@
 
     function confirmReset(id) {
         swal({
-            title: "Are you sure?",
-            text: "This will reset this item to default state",
+            title: "Etes vous sure?",
+            text: "Cela réinitialisera cet élément à l'état par défaut",
             icon: "warning",
             buttons: true,
             dangerMode: true
@@ -217,10 +217,10 @@
                 displayAjaxErr(errors);
             }
            if(e.status == 500){
-               displayAjaxErr([e.status + ' ' + e.statusText + ' Please Check for Duplicate entry or Contact School Administrator/IT Personnel'])
+               displayAjaxErr([e.status + ' ' + e.statusText + 'Veuillez vérifier l entrée en double ou contacter l administrateur de l école/le personnel informatique'])
            }
             if(e.status == 404){
-               displayAjaxErr([e.status + ' ' + e.statusText + ' - Requested Resource or Record Not Found'])
+               displayAjaxErr([e.status + ' ' + e.statusText + ' - Ressource demandée ou enregistrement introuvable'])
            }
             enableBtn(btn);
             return e.status;

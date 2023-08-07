@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
+class ComposerStaticInit593a74307496ced24c84b4155f6be548
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -355,8 +355,8 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -602,7 +602,6 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Mk' => __DIR__ . '/../..' . '/app/Helpers/Mk.php',
-        'App\\Helpers\\Pay' => __DIR__ . '/../..' . '/app/Helpers/Pay.php',
         'App\\Helpers\\Qs' => __DIR__ . '/../..' . '/app/Helpers/Qs.php',
         'App\\Http\\Controllers\\AjaxController' => __DIR__ . '/../..' . '/app/Http/Controllers/AjaxController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -615,14 +614,11 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Http\\Controllers\\MyAccountController' => __DIR__ . '/../..' . '/app/Http/Controllers/MyAccountController.php',
         'App\\Http\\Controllers\\MyParent\\MyController' => __DIR__ . '/../..' . '/app/Http/Controllers/MyParent/MyController.php',
         'App\\Http\\Controllers\\SuperAdmin\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdmin/SettingController.php',
-        'App\\Http\\Controllers\\SupportTeam\\DormController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/DormController.php',
         'App\\Http\\Controllers\\SupportTeam\\ExamController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/ExamController.php',
         'App\\Http\\Controllers\\SupportTeam\\GradeController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/GradeController.php',
         'App\\Http\\Controllers\\SupportTeam\\MarkController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/MarkController.php',
         'App\\Http\\Controllers\\SupportTeam\\MyClassController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/MyClassController.php',
-        'App\\Http\\Controllers\\SupportTeam\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/PaymentController.php',
         'App\\Http\\Controllers\\SupportTeam\\PinController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/PinController.php',
-        'App\\Http\\Controllers\\SupportTeam\\PromotionController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/PromotionController.php',
         'App\\Http\\Controllers\\SupportTeam\\SectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/SectionController.php',
         'App\\Http\\Controllers\\SupportTeam\\StudentRecordController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/StudentRecordController.php',
         'App\\Http\\Controllers\\SupportTeam\\SubjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupportTeam/SubjectController.php',
@@ -647,8 +643,6 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\Dorm\\DormCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Dorm/DormCreate.php',
-        'App\\Http\\Requests\\Dorm\\DormUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/Dorm/DormUpdate.php',
         'App\\Http\\Requests\\Exam\\ExamCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Exam/ExamCreate.php',
         'App\\Http\\Requests\\Exam\\ExamUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/Exam/ExamUpdate.php',
         'App\\Http\\Requests\\Grade\\GradeCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Grade/GradeCreate.php',
@@ -657,8 +651,6 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Http\\Requests\\Mark\\MarkUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/Mark/MarkUpdate.php',
         'App\\Http\\Requests\\MyClass\\ClassCreate' => __DIR__ . '/../..' . '/app/Http/Requests/MyClass/ClassCreate.php',
         'App\\Http\\Requests\\MyClass\\ClassUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/MyClass/ClassUpdate.php',
-        'App\\Http\\Requests\\Payment\\PaymentCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Payment/PaymentCreate.php',
-        'App\\Http\\Requests\\Payment\\PaymentUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/Payment/PaymentUpdate.php',
         'App\\Http\\Requests\\Pin\\PinCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Pin/PinCreate.php',
         'App\\Http\\Requests\\Pin\\PinVerify' => __DIR__ . '/../..' . '/app/Http/Requests/Pin/PinVerify.php',
         'App\\Http\\Requests\\Section\\SectionCreate' => __DIR__ . '/../..' . '/app/Http/Requests/Section/SectionCreate.php',
@@ -676,17 +668,13 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Http\\Requests\\UserUpdate' => __DIR__ . '/../..' . '/app/Http/Requests/UserUpdate.php',
         'App\\Models\\BloodGroup' => __DIR__ . '/../..' . '/app/Models/BloodGroup.php',
         'App\\Models\\ClassType' => __DIR__ . '/../..' . '/app/Models/ClassType.php',
-        'App\\Models\\Dorm' => __DIR__ . '/../..' . '/app/Models/Dorm.php',
         'App\\Models\\Exam' => __DIR__ . '/../..' . '/app/Models/Exam.php',
         'App\\Models\\ExamRecord' => __DIR__ . '/../..' . '/app/Models/ExamRecord.php',
         'App\\Models\\Grade' => __DIR__ . '/../..' . '/app/Models/Grade.php',
         'App\\Models\\Mark' => __DIR__ . '/../..' . '/app/Models/Mark.php',
         'App\\Models\\MyClass' => __DIR__ . '/../..' . '/app/Models/MyClass.php',
         'App\\Models\\Nationality' => __DIR__ . '/../..' . '/app/Models/Nationality.php',
-        'App\\Models\\Payment' => __DIR__ . '/../..' . '/app/Models/Payment.php',
-        'App\\Models\\PaymentRecord' => __DIR__ . '/../..' . '/app/Models/PaymentRecord.php',
         'App\\Models\\Pin' => __DIR__ . '/../..' . '/app/Models/Pin.php',
-        'App\\Models\\Promotion' => __DIR__ . '/../..' . '/app/Models/Promotion.php',
         'App\\Models\\Receipt' => __DIR__ . '/../..' . '/app/Models/Receipt.php',
         'App\\Models\\Section' => __DIR__ . '/../..' . '/app/Models/Section.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
@@ -703,15 +691,14 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Repositories\\DormRepo' => __DIR__ . '/../..' . '/app/Repositories/DormRepo.php',
         'App\\Repositories\\ExamRepo' => __DIR__ . '/../..' . '/app/Repositories/ExamRepo.php',
         'App\\Repositories\\LocationRepo' => __DIR__ . '/../..' . '/app/Repositories/LocationRepo.php',
         'App\\Repositories\\MarkRepo' => __DIR__ . '/../..' . '/app/Repositories/MarkRepo.php',
         'App\\Repositories\\MyClassRepo' => __DIR__ . '/../..' . '/app/Repositories/MyClassRepo.php',
-        'App\\Repositories\\PaymentRepo' => __DIR__ . '/../..' . '/app/Repositories/PaymentRepo.php',
         'App\\Repositories\\PinRepo' => __DIR__ . '/../..' . '/app/Repositories/PinRepo.php',
         'App\\Repositories\\SettingRepo' => __DIR__ . '/../..' . '/app/Repositories/SettingRepo.php',
         'App\\Repositories\\StudentRepo' => __DIR__ . '/../..' . '/app/Repositories/StudentRepo.php',
+        'App\\Repositories\\SubjectRepo' => __DIR__ . '/../..' . '/app/Repositories/SubjectRepo.php',
         'App\\Repositories\\TimeTableRepo' => __DIR__ . '/../..' . '/app/Repositories/TimeTableRepo.php',
         'App\\Repositories\\UserRepo' => __DIR__ . '/../..' . '/app/Repositories/UserRepo.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
@@ -891,16 +878,10 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'Database\\Seeders\\BloodGroupsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/BloodGroupsTableSeeder.php',
         'Database\\Seeders\\ClassTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/ClassTypesTableSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
-        'Database\\Seeders\\DormitoriesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/DormitoriesTableSeeder.php',
-        'Database\\Seeders\\DormsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/DormsTableSeeder.php',
         'Database\\Seeders\\GradesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/GradesTableSeeder.php',
-        'Database\\Seeders\\MyClassesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MyClassesTableSeeder.php',
         'Database\\Seeders\\NationalitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/NationalitiesTableSeeder.php',
-        'Database\\Seeders\\SectionsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SectionsTableSeeder.php',
         'Database\\Seeders\\SettingsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SettingsTableSeeder.php',
         'Database\\Seeders\\SkillsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SkillsTableSeeder.php',
-        'Database\\Seeders\\StudentRecordsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/StudentRecordsTableSeeder.php',
-        'Database\\Seeders\\SubjectsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SubjectsTableSeeder.php',
         'Database\\Seeders\\UserTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UserTypesTableSeeder.php',
         'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -3791,23 +3772,12 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
         'League\\MimeTypeDetection\\EmptyExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/EmptyExtensionToMimeTypeMap.php',
-        'League\\MimeTypeDetection\\EmptyExtensionToMimeTypeMapTest' => __DIR__ . '/..' . '/league/mime-type-detection/src/EmptyExtensionToMimeTypeMapTest.php',
         'League\\MimeTypeDetection\\ExtensionMimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/ExtensionMimeTypeDetector.php',
-        'League\\MimeTypeDetection\\ExtensionMimeTypeDetectorTest' => __DIR__ . '/..' . '/league/mime-type-detection/src/ExtensionMimeTypeDetectorTest.php',
         'League\\MimeTypeDetection\\ExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/ExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\FinfoMimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/FinfoMimeTypeDetector.php',
-        'League\\MimeTypeDetection\\FinfoMimeTypeDetectorTest' => __DIR__ . '/..' . '/league/mime-type-detection/src/FinfoMimeTypeDetectorTest.php',
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
-        'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMapTest' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMapTest.php',
-        'League\\MimeTypeDetection\\Generation\\CombinedMimeTypeProvider' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/CombinedMimeTypeProvider.php',
-        'League\\MimeTypeDetection\\Generation\\ExtensionToMimeTypeMapGenerator' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/ExtensionToMimeTypeMapGenerator.php',
-        'League\\MimeTypeDetection\\Generation\\FlysystemProvidedMimeTypeProvider' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/FlysystemProvidedMimeTypeProvider.php',
-        'League\\MimeTypeDetection\\Generation\\JsHttpMimeDBMimeTypeProvider' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/JsHttpMimeDBMimeTypeProvider.php',
-        'League\\MimeTypeDetection\\Generation\\MimeTypeForExtension' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/MimeTypeForExtension.php',
-        'League\\MimeTypeDetection\\Generation\\MimeTypeProvider' => __DIR__ . '/..' . '/league/mime-type-detection/src/Generation/MimeTypeProvider.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
-        'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMapTest' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMapTest.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
@@ -6112,7 +6082,6 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
         'Symfony\\Component\\String\\Inflector\\FrenchInflector' => __DIR__ . '/..' . '/symfony/string/Inflector/FrenchInflector.php',
         'Symfony\\Component\\String\\Inflector\\InflectorInterface' => __DIR__ . '/..' . '/symfony/string/Inflector/InflectorInterface.php',
         'Symfony\\Component\\String\\LazyString' => __DIR__ . '/..' . '/symfony/string/LazyString.php',
-        'Symfony\\Component\\String\\Resources\\WcswidthDataGenerator' => __DIR__ . '/..' . '/symfony/string/Resources/WcswidthDataGenerator.php',
         'Symfony\\Component\\String\\Slugger\\AsciiSlugger' => __DIR__ . '/..' . '/symfony/string/Slugger/AsciiSlugger.php',
         'Symfony\\Component\\String\\Slugger\\SluggerInterface' => __DIR__ . '/..' . '/symfony/string/Slugger/SluggerInterface.php',
         'Symfony\\Component\\String\\UnicodeString' => __DIR__ . '/..' . '/symfony/string/UnicodeString.php',
@@ -6408,10 +6377,10 @@ class ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd062025d9563d31e1a3304a278b1cbd0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit593a74307496ced24c84b4155f6be548::$classMap;
 
         }, null, ClassLoader::class);
     }
