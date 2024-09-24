@@ -126,6 +126,13 @@
                                     <a href="{{ route('grades.index') }}"
                                        class="nav-link {{ in_array(Route::currentRouteName(), ['grades.index', 'grades.edit']) ? 'active' : '' }}">Appréciations</a>
                             </li>
+                            @if(Qs::userIsTeamSAT())
+                            {{--Marks Manage--}}
+                            <li class="nav-item">
+                                <a href="{{ route('marks.index') }}"
+                                   class="nav-link {{ in_array(Route::currentRouteName(), ['marks.index']) ? 'active' : '' }}">Notes</a>
+                            </li>
+                            @endif
 
                             {{--Tabulation Sheet--}}
                             <li class="nav-item">
@@ -139,12 +146,6 @@
                         @endif
 
                         @if(Qs::userIsTeamSAT())
-                            {{--Marks Manage--}}
-                            <li class="nav-item">
-                                <a href="{{ route('marks.index') }}"
-                                   class="nav-link {{ in_array(Route::currentRouteName(), ['marks.index']) ? 'active' : '' }}">Notes</a>
-                            </li>
-
                             {{--Marksheet--}}
                             <li class="nav-item">
                                 <a href="{{ route('marks.bulk') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['marks.bulk', 'marks.show']) ? 'active' : '' }}">Bulletin de notes </a>

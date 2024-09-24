@@ -35,14 +35,14 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label font-weight-semibold">Mark From <span class="text-danger">*</span></label>
                             <div class="col-lg-3">
-                                <input name="mark_from" min="0" max="100" value="{{ $gr->mark_from }}" required type="number" class="form-control" placeholder="0">
+                                <input name="mark_from" min="0" max="100" step="0.01" value="{{ $gr->mark_from }}" required type="number" class="form-control" placeholder="0">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label font-weight-semibold">Mark To <span class="text-danger">*</span></label>
                             <div class="col-lg-3">
-                                <input name="mark_to" min="0" max="100" value="{{ $gr->mark_to }}" required type="number" class="form-control" placeholder="0">
+                                <input name="mark_to" min="0" max="100" step="0.01" value="{{ $gr->mark_to }}" required type="number" class="form-control" placeholder="0">
                             </div>
                         </div>
 
