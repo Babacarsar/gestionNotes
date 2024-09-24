@@ -23,6 +23,7 @@ class CreateStudentRecordsTable extends Migration
             $table->string('session');
             $table->tinyInteger('age')->nullable();
             $table->string('year_admitted')->nullable();
+            $table->unsignedInteger('grad')->default(0);
 
             $table->timestamps();
         });

@@ -47,12 +47,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Phone:</label>
-                                <input value="{{ old('phone') }}" type="text" name="phone" class="form-control" placeholder="" >
-                            </div>
-                        </div>
+                    
 
                         <div class="col-md-3">
                             <div class="form-group">

@@ -63,19 +63,14 @@
                     </a>
                 </li>
 
-                {{--Academics--}}
-                @if(Qs::userIsAcademic())
-                    <li class="nav-item nav-item-submenu {{ in_array(Route::currentRouteName(), ['tt.index', 'ttr.edit', 'ttr.show', 'ttr.manage']) ? 'nav-item-expanded nav-item-open' : '' }} ">
-                        <a href="#" class="nav-link"><i class="icon-graduation2"></i> <span> Academics</span></a>
-
-                        <ul class="nav nav-group-sub" data-submenu-title="Manage Academics">
-
-                        {{--Timetables--}}
-                            <li class="nav-item"><a href="{{ route('tt.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['tt.index']) ? 'active' : '' }}">Emploi du temps</a></li>
-                        </ul>
+                {{--Manage Classes--}}
+                    <li class="nav-item">
+                        <a href="{{ route('classes.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['classes.index','classes.edit']) ? 'active' : '' }}"><i class="icon-windows2"></i> <span> Classes</span></a>
                     </li>
-                    @endif
-
+                    {{--Manage Sections--}}
+                    <li class="nav-item">
+                        <a href="{{ route('sections.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['sections.index','sections.edit',]) ? 'active' : '' }}"><i class="icon-fence"></i> <span>Sections</span></a>
+                    </li>
 
                 {{--Manage Students--}}
                 @if(Qs::userIsTeamSAT())
@@ -104,26 +99,13 @@
                     </li>
                 @endif
 
-                @if(Qs::userIsTeamSA())
-                    {{--Manage Users--}}
-                    <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index', 'users.show', 'users.edit']) ? 'active' : '' }}"><i class="icon-users4"></i> <span> Utilisateurs</span></a>
-                    </li>
-
-                    {{--Manage Classes--}}
-                    <li class="nav-item">
-                        <a href="{{ route('classes.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['classes.index','classes.edit']) ? 'active' : '' }}"><i class="icon-windows2"></i> <span> Classes</span></a>
-                    </li>
-                    {{--Manage Sections--}}
-                    <li class="nav-item">
-                        <a href="{{ route('sections.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['sections.index','sections.edit',]) ? 'active' : '' }}"><i class="icon-fence"></i> <span>Sections</span></a>
-                    </li>
+                   
 
                     {{--Manage Subjects--}}
                     <li class="nav-item">
                         <a href="{{ route('subjects.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['subjects.index','subjects.edit',]) ? 'active' : '' }}"><i class="icon-pin"></i> <span>Matières</span></a>
                     </li>
-                @endif
+            
 
                 {{--Exam--}}
                 @if(Qs::userIsTeamSAT())
@@ -176,6 +158,14 @@
 
 
                 {{--End Exam--}}
+
+                
+                @if(Qs::userIsTeamSA())
+                    {{--Manage Users--}}
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index', 'users.show', 'users.edit']) ? 'active' : '' }}"><i class="icon-users4"></i> <span> Utilisateurs</span></a>
+                    </li>
+                    @endif
 
                 @include('pages.'.Qs::getUserType().'.menu')
 

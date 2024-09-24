@@ -38,13 +38,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Phone:</label>
-                                <input value="{{ $user->phone }}" type="text" name="phone" class="form-control" placeholder="" >
-                            </div>
-                        </div>
-
+                       
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Telephone:</label>

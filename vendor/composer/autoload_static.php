@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit593a74307496ced24c84b4155f6be548
+class ComposerStaticInitea995b8cb853bf0aff0cfe4706707e10
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -879,9 +879,12 @@ class ComposerStaticInit593a74307496ced24c84b4155f6be548
         'Database\\Seeders\\ClassTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/ClassTypesTableSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\GradesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/GradesTableSeeder.php',
+        'Database\\Seeders\\MyClassesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/MyClassesTableSeeder.php',
         'Database\\Seeders\\NationalitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/NationalitiesTableSeeder.php',
+        'Database\\Seeders\\SectionsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SectionsTableSeeder.php',
         'Database\\Seeders\\SettingsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SettingsTableSeeder.php',
         'Database\\Seeders\\SkillsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SkillsTableSeeder.php',
+        'Database\\Seeders\\SubjectsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/SubjectsTableSeeder.php',
         'Database\\Seeders\\UserTypesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UserTypesTableSeeder.php',
         'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -6377,10 +6380,10 @@ class ComposerStaticInit593a74307496ced24c84b4155f6be548
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit593a74307496ced24c84b4155f6be548::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit593a74307496ced24c84b4155f6be548::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitea995b8cb853bf0aff0cfe4706707e10::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitea995b8cb853bf0aff0cfe4706707e10::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitea995b8cb853bf0aff0cfe4706707e10::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitea995b8cb853bf0aff0cfe4706707e10::$classMap;
 
         }, null, ClassLoader::class);
     }

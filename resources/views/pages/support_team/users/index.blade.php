@@ -69,12 +69,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Phone:</label>
-                                        <input value="{{ old('phone') }}" type="text" name="phone" class="form-control" placeholder="+221 771234567" >
-                                    </div>
-                                </div>
+                               
 
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -88,15 +83,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Date of Employment:</label>
-                                        <input autocomplete="off" name="emp_date" value="{{ old('emp_date') }}" type="text" class="form-control date-pick" placeholder="Select Date...">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="password">Mot de Passe: </label>
+                                        <label for="password">Mot de Passe: <span class="text-danger">*</span></label>
                                         <input id="password" type="password" name="password" class="form-control"  >
                                     </div>
                                 </div>
